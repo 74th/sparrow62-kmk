@@ -1,0 +1,3 @@
+[submodule "https:/github.com/KMKfw/kmk_firmware"]
+	path = kmk_firmware
+	url = https://github.com/adafruit/circuitpython.git
