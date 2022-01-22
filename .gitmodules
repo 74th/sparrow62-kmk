@@ -1,0 +1,6 @@
+[submodule "kmk_firmware"]
+	path = libs/kmk_firmware
+	url = https://github.com/KMKfw/kmk_firmware
+[submodule "libs/Adafruit_CircuitPython_MCP230xx"]
+	path = libs/Adafruit_CircuitPython_MCP230xx
+	url = https://github.com/adafruit/Adafruit_CircuitPython_MCP230xx.git
