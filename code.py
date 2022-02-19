@@ -1,5 +1,3 @@
-print("Starting")
-
 from adafruit_mcp230xx.mcp23017 import MCP23017
 import board
 import busio
@@ -7,8 +5,13 @@ import busio
 from kmk.kmk_keyboard import KMKKeyboard
 from kmk.keys import KC
 from kmk.matrix import DiodeOrientation
+from kmk.modules.layers import Layers
+
+from keymap import get_keymap
 
 keyboard = KMKKeyboard()
+keyboard.modules.append(Layers())
+
 i2c = busio.I2C(board.GP13, board.GP12)
 mcp = MCP23017(i2c)
 
@@ -76,21 +79,6 @@ n_cols = len(keyboard.col_pins)
 
 keyboard.diode_orientation = DiodeOrientation.COL2ROW
 
-left = [
-    [KC.ESC,    KC.GRV,     KC.N1,      KC.N2,      KC.N3,      KC.N4,      KC.N5],
-    [           KC.TAB,     KC.Q,       KC.W,       KC.E,       KC.R,       KC.T,       KC.N6],
-    [           KC.LCTL,    KC.A,       KC.S,       KC.D,       KC.F,       KC.G,       KC.LBRC],
-    [           KC.LSFT,    KC.Z,       KC.X,       KC.C,       KC.V,       KC.B,       KC.RBRC],
-    [                                               KC.ESC,     KC.LGUI,    KC.LCTL,    KC.SPC],
-]
-right = [
-    [                       KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.EQL],
-    [KC.F2,     KC.F3,      KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.BSLS],
-    [           KC.BSPC,    KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
-    [           KC.ENT,     KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.F12],
-    [           KC.RALT,    KC.RGUI,    KC.RCTL,    KC.RCTL],
-]
-
 left_map = [
     [(0,0),     (0,1),      (1,0),      (2,0),      (3,0),      (4,0),      (5,0)],
     [           (0,2),      (1,1),      (2,1),      (3,1),      (4,1),      (5,1),      (6,1)],
@@ -105,16 +93,25 @@ right_map = [
     [           (7,8),      (8,8),      (9,8),      (10,8),     (11,8),     (12,8),     (13,8)],
     [           (7,9),      (8,9),      (9,9),      (10,9)],
 ]
-keyboard.keymap = [[KC.NO]*len(keyboard.col_pins)*len(keyboard.row_pins)]
 
-def apply_to_map(keys: list[list[int]], keymap: list[list[tuple[int, int]]], to: list[int]):
+def apply_to_map(
+    keys: list[list[int]], keymap: list[list[tuple[int, int]]], to: list[int]
+):
     for row_no, rows in enumerate(keymap):
         for col_no, _ in enumerate(rows):
             pos = keymap[row_no][col_no]
             to[pos[0] + pos[1] * n_cols] = keys[row_no][col_no]
 
-apply_to_map(left, left_map, keyboard.keymap[0])
-apply_to_map(right, right_map, keyboard.keymap[0])
+
+layers = get_keymap()
+keyboard.keymap = []
+
+for n, layer in enumerate(layers):
+    keymap = [KC.NO] * len(keyboard.col_pins) * len(keyboard.row_pins)
+    apply_to_map(layer[0], left_map, keymap)
+    apply_to_map(layer[1], right_map, keymap)
+    keyboard.keymap.append(keymap)
+
 
 # keyboard.keymap = [[]]
 # keyboard.debug_enabled = True
