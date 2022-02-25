@@ -2,7 +2,9 @@
 
 Sparrow62 v2 の Firmware コード
 
-keymap.py を書き換えて、自在にキーマップを変更して楽しんで下さい。
+keymap.py を書き換えて、自在に[キーマップ ./keymap.py](./keymap.py)を変更して楽しんで下さい。
+
+左右分割キーボードを1個の Raspberry PI Pico と MCP23017 で実現するためのトリックが [./code.py](./code.py) に入っています。
 
 ## Install
 
