@@ -1,5 +1,9 @@
 # Sparrow62 v2 Keyboard KMK Firmware
 
+Sparrow62 v2 の Firmware コード
+
+keymap.py を書き換えて、自在にキーマップを変更して楽しんで下さい。
+
 ## Install
 
 ### Circuit Python
