@@ -1,6 +1,7 @@
 from kmk.keys import KC
 from kmk.handlers.sequences import simple_key_sequence, send_string
 from secret import input_otp1, input_otp2
+from kmk.kmk_keyboard import KMKKeyboard
 
 
 def S(kc):
@@ -119,9 +120,11 @@ def linux_keymap():
     ]
     return [[base_left, base_right], [raise_left,raise_right]]
 
-def special_keymap():
+def special_keymap(keyboard: KMKKeyboard):
     to_mac = KC.DF(mac_base_layer)
+    to_mac.after_press_handler(lambda key, keyboard, *args: keyboard.pixels.set_rgb_fill((0,0,255)))
     to_linux = KC.DF(linux_base_layer)
+    to_linux.after_press_handler(lambda key, keyboard, *args: keyboard.pixels.set_rgb_fill((0,255,0)))
 
     raise_left = [
         [____,      ____,       to_mac,     to_linux,   ____,       ____,       ____],
@@ -139,7 +142,7 @@ def special_keymap():
     ]
     return [raise_left,raise_right]
 
-def get_keymap():
+def get_keymap(keyboard: KMKKeyboard):
     mac_base, mac_raise = mac_keymap()
     linux_base, linux_raise = linux_keymap()
     return [
@@ -147,5 +150,5 @@ def get_keymap():
         mac_raise,
         linux_base,
         linux_raise,
-        special_keymap(),
+        special_keymap(keyboard),
     ]

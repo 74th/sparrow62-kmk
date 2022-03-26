@@ -8,11 +8,14 @@ from kmk.keys import KC
 from kmk.matrix import DiodeOrientation
 from kmk.modules.layers import Layers
 from kmk.modules.modtap import ModTap
+from kmk.extensions.rgb import RGB
 
 keyboard = KMKKeyboard()
 keyboard.modules.append(Layers())
 modtap = ModTap()
 keyboard.modules.append(modtap)
+led_ext = RGB(board.GP14, 1)
+keyboard.extensions.append(led_ext)
 
 from keymap import get_keymap
 
@@ -136,7 +139,7 @@ def apply_to_map(
             to[pos[0] + pos[1] * n_cols] = keys[row_no][col_no]
 
 
-layers = get_keymap()
+layers = get_keymap(keyboard)
 keyboard.keymap = []
 
 for n, layer in enumerate(layers):
@@ -150,5 +153,6 @@ for n, layer in enumerate(layers):
 # keyboard.debug_enabled = True
 
 if __name__ == "__main__":
+    led_ext.set_rgb_fill((255,0,0))
     keyboard.go()
     pass
