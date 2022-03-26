@@ -122,9 +122,9 @@ def linux_keymap():
 
 def special_keymap(keyboard: KMKKeyboard):
     to_mac = KC.DF(mac_base_layer)
-    to_mac.after_press_handler(lambda key, keyboard, *args: keyboard.pixels.set_rgb_fill((0,0,255)))
+    to_mac.after_press_handler(lambda *args: keyboard.pixels.set_rgb_fill((0, 0, 8)))
     to_linux = KC.DF(linux_base_layer)
-    to_linux.after_press_handler(lambda key, keyboard, *args: keyboard.pixels.set_rgb_fill((0,255,0)))
+    to_linux.after_press_handler(lambda *args: keyboard.pixels.set_rgb_fill((0, 8, 0)))
 
     raise_left = [
         [____,      ____,       to_mac,     to_linux,   ____,       ____,       ____],
@@ -140,7 +140,7 @@ def special_keymap(keyboard: KMKKeyboard):
         [           ____,       ____,       ____,       ____,       ____,       ____,       ____],
         [           ____,       ____,       ____,       ____],
     ]
-    return [raise_left,raise_right]
+    return [raise_left, raise_right]
 
 def get_keymap(keyboard: KMKKeyboard):
     mac_base, mac_raise = mac_keymap()
