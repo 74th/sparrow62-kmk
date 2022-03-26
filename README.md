@@ -4,7 +4,7 @@ Sparrow62 v2 の Firmware コード
 
 keymap.py を書き換えて、自在に[キーマップ ./keymap.py](./keymap.py)を変更して楽しんで下さい。
 
-左右分割キーボードを1個の Raspberry PI Pico と MCP23017 で実現するためのトリックが [./code.py](./code.py) に入っています。
+左右分割キーボードを 1 個の Raspberry PI Pico と MCP23017 で実現するためのトリックが [./code.py](./code.py) に入っています。
 
 ## Install
 
@@ -34,7 +34,12 @@ Circuit Python がブートされると、CIRCUITPY という USB メモリと�
 - libs/libs/Adafruit_CircuitPython_MCP230xx/adafruit_mcp230xx
 - libs/kmk_firmware/kmk
 
-### Sparrow62 用のキーマップと、初期ファイルの設置
+また、RGB LED を点灯する NeoPixel モジュールをインストールします。
+以下のリリースから、 adafruit-circuitpython-bundle-7.x-mpy-20220326.zip をダウンロードし、ZIP 中の lib/neopixel.mpy を、CIRCUITPY 内の libs/ 内に置きます。
+
+https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases
+
+### Raspberry Pi Pico 版の NumAtreus 用のキーマップと、初期ファイルの設置
 
 以下の 2 つのファイルを、CIRCUITPY のルートディレクトリに置きます。
 
