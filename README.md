@@ -39,7 +39,7 @@ Circuit Python がブートされると、CIRCUITPY という USB メモリと�
 
 https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases
 
-### Raspberry Pi Pico 版の NumAtreus 用のキーマップと、初期ファイルの設置
+### Sparrow62 v2 用のキーマップと、初期ファイルの設置
 
 以下の 2 つのファイルを、CIRCUITPY のルートディレクトリに置きます。
 
@@ -48,3 +48,9 @@ https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases
 - keymap.py
 
 自動で再ロードされるため、キーボードとしてすぐ利用できます。
+
+## その他のテクニックや、トラブルシューティング
+
+ZENN にまとめています。
+
+https://zenn.dev/74th/scraps/c59fb553c9309f
