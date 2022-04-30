@@ -46,6 +46,7 @@ modtap = ModTap()
 keyboard.modules.append(modtap)
 led_ext = RGB(board.GP14, 1, val_default=6)
 keyboard.extensions.append(led_ext)
+led_ext.set_rgb_fill((255,0,0))
 
 from keymap import get_keymap
 
