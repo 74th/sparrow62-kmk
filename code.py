@@ -1,14 +1,44 @@
-from adafruit_mcp230xx.mcp23017 import MCP23017
 import board
 import busio
+import time
 import digitalio
 
-from kmk.kmk_keyboard import KMKKeyboard
-from kmk.keys import KC
-from kmk.matrix import DiodeOrientation
-from kmk.modules.layers import Layers
-from kmk.modules.modtap import ModTap
-from kmk.extensions.rgb import RGB
+def reboot(message: list[str]):
+    for i in range(10):
+        for m in message:
+            print(m)
+        print(f"\nauto reload after {10-i} sec\n")
+        time.sleep(1)
+    import supervisor
+    supervisor.reload()
+
+
+try:
+    from adafruit_mcp230xx.mcp23017 import MCP23017
+except ImportError as e:
+    reboot([str(e), "cannot find adfruit_mcp230xx module"])
+
+try:
+    from kmk.kmk_keyboard import KMKKeyboard
+    from kmk.keys import KC
+    from kmk.matrix import DiodeOrientation
+    from kmk.modules.layers import Layers
+    from kmk.modules.modtap import ModTap
+    from kmk.extensions.rgb import RGB
+except ImportError as e:
+    reboot([str(e), "cannot find kmk module"])
+try:
+    import neopixel
+except ImportError as e:
+    reboot([str(e), "cannot find neopixel module"])
+
+try:
+    i2c = busio.I2C(board.GP13, board.GP12, frequency=300_000)
+    mcp = MCP23017(i2c)
+except ValueError as e:
+    reboot([str(e), "cannot communicate to right board."])
+except RuntimeError as e:
+    reboot([str(e), "cannot communicate to right board."])
 
 keyboard = KMKKeyboard()
 keyboard.modules.append(Layers())
@@ -18,10 +48,6 @@ led_ext = RGB(board.GP14, 1, val_default=6)
 keyboard.extensions.append(led_ext)
 
 from keymap import get_keymap
-
-i2c = busio.I2C(board.GP13, board.GP12, frequency=300_000)
-mcp = MCP23017(i2c)
-
 
 def get_wrapper_class():
     class DigitalInOut:
@@ -133,10 +159,17 @@ right_map = [
 def apply_to_map(
     keys: list[list[int]], keymap: list[list[tuple[int, int]]], to: list[int]
 ):
+    col_no = -1
+    row_no = -1
     for row_no, rows in enumerate(keymap):
         for col_no, _ in enumerate(rows):
-            pos = keymap[row_no][col_no]
-            to[pos[0] + pos[1] * n_cols] = keys[row_no][col_no]
+            pos = None
+            try:
+                pos = keymap[row_no][col_no]
+                to[pos[0] + pos[1] * n_cols] = keys[row_no][col_no]
+            except IndexError as e:
+                reboot([str(e), f"check your keymap row:{row_no}, col:{col_no}"])
+
 
 
 layers = get_keymap(keyboard)
@@ -148,9 +181,6 @@ for n, layer in enumerate(layers):
     apply_to_map(layer[1], right_map, keymap)
     keyboard.keymap.append(keymap)
 
-
-# keyboard.keymap = [[]]
-# keyboard.debug_enabled = True
 
 if __name__ == "__main__":
     keyboard.pixels = led_ext
