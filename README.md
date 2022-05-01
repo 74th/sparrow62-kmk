@@ -47,10 +47,41 @@ https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases
 - code.py
 - keymap.py
 
-自動で再ロードされるため、キーボードとしてすぐ利用できます。
+boot.py には、自動リロードをオフにする設定が入っています（ソースコードが置き換わる前に、リロードされるとエラーになるため）。
+
+### 2 回目移行のアップグレード
+
+このリポジトリには、MacOS、Linux で使用できるアップロードコマンドが Python のタスクランナー Invoke で実装されています。
+
+invoke、detect がインストールされている場合（もしくは poetry install を行った場合）、以下のコマンドでアップロードを実行できます。
+
+```
+# invoke, detect がインストールされている
+inv -e upload
+
+# poetry を使う場合
+poetry run inv -e upload
+```
+
+詳しい実装は [./tasks.py](./tasks.py) をみてみてください。
+
+## LED の色
+
+初期起動時には LED の色は白色に光ります。
+その後、発色を抑えるなどをおこなってください。
+
+## エラーの時
+
+この code.py には、モジュールの読み込みでエラーが発生した場合、自動的に 10 秒で再起動する処理が入っています。
+
+キーマップを開発している時、Python のコードのため、実行するまでエラーが含まれているかどうかがわかりません。
+
+この code.py ではキーマップの読み込みでエラーになった場合、LED を赤色に変えて、さらに backup_keymap.py を読み込んで実行するようになっています。
+
+ぜひ、動作する状態のキーマップを backup_keymap.py として保存しておいてください。
 
 ## その他のテクニックや、トラブルシューティング
 
-ZENN にまとめています。
+Zenn にまとめています。
 
 https://zenn.dev/74th/scraps/c59fb553c9309f

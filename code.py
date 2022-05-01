@@ -6,7 +6,7 @@ import time
 import digitalio
 
 
-def reboot(message: list[str], exp: Exception):
+def reboot_with_error(message: list[str], exp: Exception):
     for i in range(10):
         print()
         traceback.print_exception(None, exp, exp.__traceback__)
@@ -85,7 +85,7 @@ def main():
     try:
         from adafruit_mcp230xx.mcp23017 import MCP23017
     except ImportError as e:
-        reboot([str(e), "cannot find adfruit_mcp230xx module"], e)
+        reboot_with_error(["cannot find adfruit_mcp230xx module"], e)
         return
 
     try:
@@ -96,22 +96,22 @@ def main():
         from kmk.modules.modtap import ModTap
         from kmk.extensions.rgb import RGB
     except ImportError as e:
-        reboot([str(e), "cannot find kmk module"], e)
+        reboot_with_error(["cannot find kmk module"], e)
         return
     try:
         import neopixel
     except ImportError as e:
-        reboot([str(e), "cannot find neopixel module"], e)
+        reboot_with_error(["cannot find neopixel module"], e)
         return
 
     try:
         i2c = busio.I2C(board.GP13, board.GP12, frequency=300_000)
         mcp = MCP23017(i2c)
     except ValueError as e:
-        reboot([str(e), "cannot communicate to right board."], e)
+        reboot_with_error(["cannot communicate to right board."], e)
         return
     except RuntimeError as e:
-        reboot([str(e), "cannot communicate to right board."], e)
+        reboot_with_error(["cannot communicate to right board."], e)
         return
 
     keyboard = KMKKeyboard()
@@ -166,7 +166,7 @@ def main():
     ]
     right_map = [
         [(1, 5), (2, 5), (3, 5), (4, 5), (5, 5), (6, 5)],
-        [(0, 5), (0, 6), (1, 6), (2, 6), (3, 6), (4, 6), (5, 6), (6, 6)],
+        [(0, 6), (1, 6), (2, 6), (3, 6), (4, 6), (5, 6), (6, 6)],
         [(0, 7), (1, 7), (2, 7), (3, 7), (4, 7), (5, 7), (6, 7)],
         [(0, 8), (1, 8), (2, 8), (3, 8), (4, 8), (5, 8), (6, 8)],
         [(0, 9), (1, 9), (2, 9), (3, 9)],
@@ -190,12 +190,12 @@ def main():
     try:
         print("load keymap")
 
-        from keymap import get_keymap
+        import keymap as keymap_mod
 
-        layers = get_keymap(keyboard)
+        layers = keymap_mod.get_keymap(keyboard)
         keyboard.keymap = []
 
-        for n, layer in enumerate(layers):
+        for _, layer in enumerate(layers):
             keymap = [KC.NO] * len(keyboard.col_pins) * len(keyboard.row_pins)
             apply_to_map(layer[0], left_map, keymap)
             apply_to_map(layer[1], right_map, keymap)
@@ -204,23 +204,30 @@ def main():
     except Exception as e:
         print()
         print("keymap has error")
+        print()
         traceback.print_exception(None, e, e.__traceback__)
         print()
         print("load backup keymap")
+        print()
         keyboard.pixels.set_rgb_fill((255, 0, 0))
 
-        from backup_keymap import get_keymap
+        import keymap as keymap_mod
 
-        layers = get_keymap(keyboard)
+        layers = keymap_mod.get_keymap(keyboard)
         keyboard.keymap = []
 
-        for n, layer in enumerate(layers):
+        for _, layer in enumerate(layers):
             keymap = [KC.NO] * len(keyboard.col_pins) * len(keyboard.row_pins)
             apply_to_map(layer[0], left_map, keymap)
             apply_to_map(layer[1], right_map, keymap)
             keyboard.keymap.append(keymap)
 
-    print("start keyboard")
+        print("start keyboard")
+
+    if hasattr(keymap_mod, "on_before_start"):
+        keymap_mod.on_before_start(keyboard)
+
+
     keyboard.go()
 
 

@@ -125,3 +125,6 @@ def get_keymap(keyboard: KMKKeyboard):
     layer5 = layer5_keymap()
     layer6 = layer6_keymap()
     return [layer1[0], layer2[0], layer3[0], layer4[0], layer5[0], layer6[0]]
+
+def on_before_start(keyboard: KMKKeyboard):
+    keyboard.pixels.set_rgb_fill((64, 0, 0))
