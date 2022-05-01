@@ -9,6 +9,7 @@ if detect.osx:
     mount_dir = "/Volumes/CIRCUITPY"
 
 keymap_path = os.environ.get("KEYMAP_PATH", "./keymap.py")
+backup_keymap_path = os.environ.get("BACKUP_KEYMAP_PATH", "./backup_keymap.py")
 
 def mount_linux(c):
     if not path.exists(mount_dir):
@@ -67,8 +68,10 @@ def upload(c):
     elif detect.linux:
         mount_linux(c)
 
-    c.run(f"cp {mount_dir}/keymap.py {mount_dir}/keymap_bk.py")
     c.run(f"cp code.py {keymap_path} {mount_dir}")
+    c.run(f"cp code.py {mount_dir}")
+    c.run(f"cp {keymap_path} {mount_dir}/keymap.py")
+    c.run(f"cp {backup_keymap_path} {mount_dir}/backup_keymap.py")
     c.run("sync")
 
     umount(c)
@@ -85,7 +88,6 @@ def console(c):
             usb = usb_devices[0].strip()
             print(f"command:")
             print(f"screen {usb} 115200")
-
 
 @task
 def compile_kmk(c):

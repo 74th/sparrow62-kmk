@@ -32,8 +32,8 @@ linux_base_layer = 2
 linux_raise_layer = 3
 special_layer = 4
 
-ubuntu_orange = (2, 1, 0)
-mac_blue = (0, 0, 1)
+ubuntu_orange = (255, 0, 0)
+mac_blue = (255, 0, 255)
 led_clear = (0, 0, 0)
 
 ____ = KC.TRANSPARENT
