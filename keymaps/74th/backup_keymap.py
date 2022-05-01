@@ -32,8 +32,8 @@ linux_base_layer = 2
 linux_raise_layer = 3
 special_layer = 4
 
-ubuntu_orange = (255, 0, 0)
-mac_blue = (255, 0, 255)
+ubuntu_orange = (2, 1, 0)
+mac_blue = (0, 0, 1)
 led_clear = (0, 0, 0)
 
 ____ = KC.TRANSPARENT
@@ -61,11 +61,11 @@ def mac_keymap():
         [                                               esc_eisu,   opt_tab,    cmd_eisu,   KC.SPC],
     ]
     base_right = [
-        [            KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.EQL],
-        [KC.F3,      KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.EQL],
-        [KC.BSPC,    KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
-        [KC.ENT,     KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.BSLS],
-        [KC.ENTER,   raise_ent,  opt_kana,   KC.BSPC],
+        [           KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.EQL],
+        [KC.F3,     KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.EQL],
+        [KC.BSPC,   KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
+        [KC.ENT,    KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.BSLS],
+        [KC.ENTER,  raise_ent,  opt_kana,   KC.BSPC],
     ]
 
     raise_left = [
@@ -73,14 +73,14 @@ def mac_keymap():
         [           KC.ESC,     KC.F1,      KC.F2,      KC.F3,      KC.F4,      KC.F5,      KC.F6],
         [           KC.LCTL,    S(KC.N1),   S(KC.N2),   S(KC.N3),   S(KC.N4),   S(KC.N5),   S(KC.N6)],
         [           KC.LSHIFT,  ____,       ____,       pr_window,  pr_screen,  KC.F12,     ____],
-        [                                               esc_eisu,   KC.SPC,     KC.LGUI,    KC.MINS],
+        [                       esc_eisu,   KC.SPC,     KC.LGUI,    KC.MINS],
     ]
     raise_right = [
-        [            G(KC.F6),   G(KC.F7),   G(KC.F8),   G(KC.F9),   ____,       ____],
-        [KC.F3,      KC.F7,      KC.F8,      KC.F9,      KC.F10,     KC.F11,     KC.F12],
-        [____,       S(KC.N7),   S(KC.N8),   S(KC.N9),   S(KC.N0),   S(KC.MINS), KC.EQL],
-        [____,       KC.LEFT,    KC.DOWN,    KC.UP,      KC.RIGHT,   KC.HOME,    KC.END],
-        [____,       ____,       ____,       KC.DEL],
+        [           G(KC.F6),   G(KC.F7),   G(KC.F8),   G(KC.F9),   ____,       ____],
+        [KC.F3,     KC.F7,      KC.F8,      KC.F9,      KC.F10,     KC.F11,     KC.F12],
+        [____,      S(KC.N7),   S(KC.N8),   S(KC.N9),   S(KC.N0),   S(KC.MINS), KC.EQL],
+        [____,      KC.LEFT,    KC.DOWN,    KC.UP,      KC.RIGHT,   KC.HOME,    KC.END],
+        [____,      ____,       ____,       KC.DEL],
     ]
     return [[base_left, base_right], [raise_left, raise_right]]
 
@@ -160,7 +160,6 @@ def get_keymap(keyboard: KMKKeyboard):
     mac_base, mac_raise = mac_keymap()
     linux_base, linux_raise = linux_keymap()
 
-    keyboard.pixels.set_rgb_fill(mac_blue)
 
     return [
         mac_base,
@@ -171,4 +170,4 @@ def get_keymap(keyboard: KMKKeyboard):
     ]
 
 def on_before_start(keyboard: KMKKeyboard):
-    keyboard.pixels.set_rgb_fill((64, 0, 0))
+    keyboard.pixels.set_rgb_fill(mac_blue)

@@ -201,6 +201,11 @@ def main():
             apply_to_map(layer[1], right_map, keymap)
             keyboard.keymap.append(keymap)
 
+        if hasattr(keymap_mod, "on_before_start"):
+            keymap_mod.on_before_start(keyboard)
+
+        print("start keyboard")
+
     except Exception as e:
         print()
         print("keymap has error")
@@ -211,9 +216,9 @@ def main():
         print()
         keyboard.pixels.set_rgb_fill((255, 0, 0))
 
-        import keymap as keymap_mod
+        import backup_keymap as backup_keymap_mod
 
-        layers = keymap_mod.get_keymap(keyboard)
+        layers = backup_keymap_mod.get_keymap(keyboard)
         keyboard.keymap = []
 
         for _, layer in enumerate(layers):
@@ -222,11 +227,10 @@ def main():
             apply_to_map(layer[1], right_map, keymap)
             keyboard.keymap.append(keymap)
 
+        if hasattr(backup_keymap_mod, "on_before_start"):
+            backup_keymap_mod.on_before_start(keyboard)
+
         print("start keyboard")
-
-    if hasattr(keymap_mod, "on_before_start"):
-        keymap_mod.on_before_start(keyboard)
-
 
     keyboard.go()
 
