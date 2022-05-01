@@ -17,7 +17,7 @@ def layer1_keymap():
         [           KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.EQL],
         [KC.BSPC,   KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.BSLS],
         [KC.GRV,    KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
-        [KC.RSFT,   KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.BSLS],
+        [KC.RSFT,   KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.RSFT],
         [KC.RALT,   KC.RGUI,    KC.RALT,    KC.RCTL],
     ]
 
