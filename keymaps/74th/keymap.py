@@ -1,5 +1,5 @@
 from kmk.keys import KC
-from kmk.handlers.sequences import simple_key_sequence, send_string
+from kmk.handlers.sequences import simple_key_sequence
 from secret import input_otp1, input_otp2
 from kmk.kmk_keyboard import KMKKeyboard
 
@@ -32,8 +32,8 @@ linux_base_layer = 2
 linux_raise_layer = 3
 special_layer = 4
 
-ubuntu_orange = (151, 62, 0)
-mac_blue = (5, 0, 150)
+ubuntu_orange = (2, 1, 0)
+mac_blue = (0, 0, 1)
 led_clear = (0, 0, 0)
 
 ____ = KC.TRANSPARENT
