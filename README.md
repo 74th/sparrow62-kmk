@@ -65,6 +65,14 @@ poetry run inv -e upload
 
 詳しい実装は [./tasks.py](./tasks.py) をみてみてください。
 
+## Circuit Python の Serial Console の開き方
+
+Circuit Python の出力は、USBシリアルコンソールに出力されます。エラー時のエラーメッセージもこちらに表示されます。
+
+接続の仕方はこちらを確認ください。
+
+https://zenn.dev/link/comments/cc8372b5b0c7d4
+
 ## LED の色
 
 初期起動時には LED の色は白色に光ります。
