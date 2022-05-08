@@ -5,7 +5,7 @@ layer1 = 0
 
 ____ = KC.TRANSPARENT
 
-def layer1_keymap():
+def layer1_keymap(keyboard: KMKKeyboard):
     left = [
         [KC.ESC,    KC.GRAVE,   KC.N1,      KC.N2,      KC.N3,      KC.N4,      KC.N5],
         [           KC.TAB,     KC.Q,       KC.W,       KC.E,       KC.R,       KC.T,       KC.N6],
@@ -24,7 +24,7 @@ def layer1_keymap():
     return [[left, right]]
 
 def get_keymap(keyboard: KMKKeyboard):
-    layer1 = layer1_keymap()
+    layer1 = layer1_keymap(keyboard)
     return [layer1[0]]
 
 def on_before_start(keyboard: KMKKeyboard):

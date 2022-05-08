@@ -73,10 +73,21 @@ Circuit Python の出力は、USB シリアルコンソールに出力されま�
 
 https://zenn.dev/link/comments/cc8372b5b0c7d4
 
-## LED の色
+## LED の色を変える
 
-初期起動時には LED の色は白色に光ります。
-その後、発色を抑えるなどをおこなってください。
+初期起動時には LED の色は白色に光ります。その後、発色を抑えるなどをおこなってください。
+
+レイヤーの切り替えのボタンを押したときに色を変えたい場合、以下のように実装できます。
+なお、keyboard.pixels は kmk/extensions/rgb.py のクラス `RGB` です。
+
+```py
+mac_blue = (0, 0, 1) # R G B 0~255
+
+# デフォルトレイヤーを偏向するボタン
+kc_to_mac = KC.DF(mac_base_layer)
+# 押下時のイベントで LED の色を変更する
+kc_to_mac.after_press_handler(lambda *args: keyboard.pixels.set_rgb_fill(mac_blue))
+```
 
 ## エラーの時
 
@@ -89,7 +100,17 @@ https://zenn.dev/link/comments/cc8372b5b0c7d4
 
 ## Pro Micro のリセットボタンの機能がほしい
 
-実装できます。
+ソフトウェアリセットは `supervisor.reload()` で行うことができます。
+これをボタンを押したときに実行するキーコードとして以下のように実装できます。
+
+```py
+def do_soft_reset(*args):
+    keyboard.pixels.set_rgb_fill(led_clear)
+    import supervisor
+    supervisor.reload()
+reset = KC.NO.clone()
+reset.after_press_handler(do_soft_reset)
+```
 
 ## その他のテクニックや、トラブルシューティング
 

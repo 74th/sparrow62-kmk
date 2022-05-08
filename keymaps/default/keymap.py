@@ -16,7 +16,7 @@ mo_layer4 = KC.MO(layer4)
 mo_layer5 = KC.MO(layer5)
 mo_layer6 = KC.MO(layer6)
 
-def layer1_keymap():
+def layer1_keymap(keyboard: KMKKeyboard):
     left = [
         [KC.ESC,    KC.GRAVE,   KC.N1,      KC.N2,      KC.N3,      KC.N4,      KC.N5],
         [           KC.TAB,     KC.Q,       KC.W,       KC.E,       KC.R,       KC.T,       KC.N6],
@@ -34,7 +34,7 @@ def layer1_keymap():
 
     return [[left, right]]
 
-def layer2_keymap():
+def layer2_keymap(keyboard: KMKKeyboard):
     left = [
         [____,      ____,       KC.F1,      KC.F2,      KC.F3,      KC.F4,      KC.F5],
         [           ____,       ____,       ____,       ____,       ____,       ____,       KC.F6],
@@ -52,7 +52,7 @@ def layer2_keymap():
 
     return [[left, right]]
 
-def layer3_keymap():
+def layer3_keymap(keyboard: KMKKeyboard):
     left = [
         [____,      ____,       ____,       ____,       ____,       ____,       ____],
         [           ____,       ____,       ____,       ____,       ____,       ____,       ____],
@@ -71,7 +71,7 @@ def layer3_keymap():
 
     return [[left, right]]
 
-def layer4_keymap():
+def layer4_keymap(keyboard: KMKKeyboard):
     left = [
         [____,      ____,       ____,       ____,       ____,       ____,       ____],
         [           ____,       ____,       ____,       ____,       ____,       ____,       ____],
@@ -89,7 +89,7 @@ def layer4_keymap():
 
     return [[left, right]]
 
-def layer5_keymap():
+def layer5_keymap(keyboard: KMKKeyboard):
     left = [
         [____,      ____,       ____,       ____,       ____,       ____,       ____],
         [           ____,       ____,       ____,       ____,       ____,       ____,       ____],
@@ -108,7 +108,7 @@ def layer5_keymap():
     return [[left, right]]
 
 
-def layer6_keymap():
+def layer6_keymap(keyboard: KMKKeyboard):
     left = [
         [____,      ____,       ____,       ____,       ____,       ____,       ____],
         [           ____,       ____,       ____,       ____,       ____,       ____,       ____],
@@ -127,12 +127,12 @@ def layer6_keymap():
     return [[left, right]]
 
 def get_keymap(keyboard: KMKKeyboard):
-    layer1 = layer1_keymap()
-    layer2 = layer2_keymap()
-    layer3 = layer3_keymap()
-    layer4 = layer4_keymap()
-    layer5 = layer5_keymap()
-    layer6 = layer6_keymap()
+    layer1 = layer1_keymap(keyboard)
+    layer2 = layer2_keymap(keyboard)
+    layer3 = layer3_keymap(keyboard)
+    layer4 = layer4_keymap(keyboard)
+    layer5 = layer5_keymap(keyboard)
+    layer6 = layer6_keymap(keyboard)
     return [layer1[0], layer2[0], layer3[0], layer4[0], layer5[0], layer6[0]]
 
 def on_before_start(keyboard: KMKKeyboard):

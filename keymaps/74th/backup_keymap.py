@@ -40,7 +40,7 @@ ____ = KC.TRANSPARENT
 
 special = KC.MO(special_layer)
 
-def linux_keymap():
+def linux_keymap(keyboard: KMKKeyboard):
     eisu = KC.MHEN
     kana = KC.HENK
     pr_window = A(KC.PSCREEN)
@@ -83,7 +83,7 @@ def linux_keymap():
     ]
     return [[base_left, base_right], [raise_left,raise_right]]
 
-def mac_keymap():
+def mac_keymap(keyboard: KMKKeyboard):
     eisu = KC.LANG2
     kana = KC.LANG1
     pr_window = SG(KC.N3)
@@ -158,8 +158,8 @@ def special_keymap(keyboard: KMKKeyboard):
     return [raise_left, raise_right]
 
 def get_keymap(keyboard: KMKKeyboard):
-    linux_base, linux_raise = linux_keymap()
-    mac_base, mac_raise = mac_keymap()
+    linux_base, linux_raise = linux_keymap(keyboard)
+    mac_base, mac_raise = mac_keymap(keyboard)
     return [
         linux_base,
         linux_raise,
