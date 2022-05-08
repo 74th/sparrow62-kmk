@@ -79,7 +79,7 @@ uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "circuitpython-stubs"
-version = "2019.5.26"
+version = "7.2.5"
 description = "PEP 561 type stubs for CircuitPython"
 category = "main"
 optional = false
@@ -215,7 +215,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "682fd432bba1c7d5335b092d94d10f9f3fcb6bab14f4f9657ab8227efa6a2a1d"
+content-hash = "5d4091e77c7f39ccea1594fc0d98b2d6a944164f012b6981cc4721527e203c3c"
 
 [metadata.files]
 adafruit-blinka = [
@@ -238,7 +238,7 @@ black = [
     {file = "black-21.9b0.tar.gz", hash = "sha256:7de4cfc7eb6b710de325712d40125689101d21d25283eed7e9998722cf10eb91"},
 ]
 circuitpython-stubs = [
-    {file = "circuitpython-stubs-2019.5.26.tar.gz", hash = "sha256:ae7b40b34c81b1ab3da8547615124d7c7d67660f35a7571b65643a9d415968d4"},
+    {file = "circuitpython-stubs-7.2.5.tar.gz", hash = "sha256:265b96459966d17d5ea69ebfb88f22062ce72a53c7b2335a3820ef442f24ef6e"},
 ]
 click = [
     {file = "click-8.0.3-py3-none-any.whl", hash = "sha256:353f466495adaeb40b6b5f592f9f91cb22372351c84caeb068132442a4518ef3"},

@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-circuitpython-stubs = "^2019.5.26"
+circuitpython-stubs = "7.2.5"
 adafruit-circuitpython-mcp230xx = "^2.5.0"
 
 [tool.poetry.dev-dependencies]

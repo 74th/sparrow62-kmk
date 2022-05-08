@@ -62,10 +62,10 @@ def linux_keymap():
     ]
     base_right = [
         [           KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.EQL],
-        [KC.F3,     KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.EQL],
-        [KC.BSPC,   KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
-        [KC.ENT,    KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.BSLS],
-        [KC.ENTER,  raise_ent,  gui_kana,   KC.BSPC],
+        [KC.BSPC,   KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.EQL],
+        [KC.ENT,    KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
+        [KC.LSHIFT, KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.BSLS],
+        [raise_ent, raise_ent,  gui_kana,   KC.BSPC],
     ]
     raise_left = [
         [____,      CA(KC.F2),  G(KC.F1),   SG(KC.F2),  G(KC.F3),   SG(KC.F2),   CA(KC.ESC)],
@@ -76,7 +76,7 @@ def linux_keymap():
     ]
     raise_right = [
         [           G(KC.F6),   G(KC.F7),   G(KC.F8),   G(KC.F9),   ____,       ____],
-        [KC.F3,     KC.F7,      KC.F8,      KC.F9,      KC.F10,     KC.F11,     KC.F12],
+        [____,      KC.F7,      KC.F8,      KC.F9,      KC.F10,     KC.F11,     KC.F12],
         [____,      S(KC.N7),   S(KC.N8),   S(KC.N9),   S(KC.N0),   S(KC.MINS), KC.EQL],
         [____,      KC.LEFT,    KC.DOWN,    KC.UP,      KC.RIGHT,   KC.HOME,    KC.END],
         [____,      ____,       ____,       KC.DEL],
@@ -105,10 +105,10 @@ def mac_keymap():
     ]
     base_right = [
         [           KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.EQL],
-        [KC.F3,     KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.EQL],
-        [KC.BSPC,   KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
-        [KC.ENT,    KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.BSLS],
-        [KC.ENTER,  raise_ent,  opt_kana,   KC.BSPC],
+        [KC.BSPC,   KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.EQL],
+        [KC.ENT,    KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
+        [KC.LSHIFT, KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.BSLS],
+        [raise_ent, raise_ent,  opt_kana,   KC.BSPC],
     ]
 
     raise_left = [
@@ -120,8 +120,8 @@ def mac_keymap():
     ]
     raise_right = [
         [           G(KC.F6),   G(KC.F7),   G(KC.F8),   G(KC.F9),   ____,       ____],
-        [KC.F3,     KC.F7,      KC.F8,      KC.F9,      KC.F10,     KC.F11,     KC.F12],
-        [____,      S(KC.N7),   S(KC.N8),   S(KC.N9),   S(KC.N0),   S(KC.MINS), KC.EQL],
+        [____,      KC.F7,      KC.F8,      KC.F9,      KC.F10,     KC.F11,     KC.F12],
+        [KC.CAPS,   S(KC.N7),   S(KC.N8),   S(KC.N9),   S(KC.N0),   S(KC.MINS), KC.EQL],
         [____,      KC.LEFT,    KC.DOWN,    KC.UP,      KC.RIGHT,   KC.HOME,    KC.END],
         [____,      ____,       ____,       KC.DEL],
     ]
