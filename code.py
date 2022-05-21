@@ -91,7 +91,8 @@ def main():
     try:
         from kmk.kmk_keyboard import KMKKeyboard
         from kmk.keys import KC
-        from kmk.matrix import DiodeOrientation
+        from kmk.scanners import DiodeOrientation
+        from kmk.scanners.digitalio import MatrixScanner
         from kmk.modules.layers import Layers
         from kmk.modules.modtap import ModTap
         from kmk.extensions.rgb import RGB
@@ -231,6 +232,12 @@ def main():
             backup_keymap_mod.on_before_start(keyboard)
 
         print("start keyboard")
+
+    keyboard.matrix = MatrixScanner( # type:ignore
+        cols=keyboard.col_pins,
+        rows=keyboard.row_pins,
+        diode_orientation=keyboard.diode_orientation,
+    )
 
     keyboard.go()
 
