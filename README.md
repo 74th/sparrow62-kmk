@@ -29,13 +29,13 @@ libs 内にない場合、以下のコマンドを実行してチェックアウ
 git submodule update -i
 ```
 
-Circuit Python がブートされると、CIRCUITPY という USB メモリとして認識するため、以下の 2 つのディレクトリを libs/ 内に置きます。
+Circuit Python がブートされると、CIRCUITPY という USB メモリとして認識するため、以下の 2 つのディレクトリを lib/ 内に置きます。
 
-- libs/libs/Adafruit_CircuitPython_MCP230xx/adafruit_mcp230xx
+- libs/Adafruit_CircuitPython_MCP230xx/adafruit_mcp230xx
 - libs/kmk_firmware/kmk
 
 また、RGB LED を点灯する NeoPixel モジュールをインストールします。
-以下のリリースから、 adafruit-circuitpython-bundle-7.x-mpy-20220326.zip をダウンロードし、ZIP 中の lib/neopixel.mpy を、CIRCUITPY 内の libs/ 内に置きます。
+以下のリリースから、 adafruit-circuitpython-bundle-7.x-mpy-20220326.zip をダウンロードし、ZIP 中の lib/neopixel.mpy を、CIRCUITPY 内の lib/ 内に置きます。
 
 https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases
 
