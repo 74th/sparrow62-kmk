@@ -60,6 +60,7 @@ def linux_keymap(keyboard: KMKKeyboard):
         [           KC.LSHIFT,  KC.Z,       KC.X,       KC.C,       KC.V,       KC.B,       KC.RBRC],
         [                                               esc_eisu,   alt_tab,    ctl_eisu,   KC.SPC],
     ]
+    # トラックパッド併用のため、右手内側 4 キーは使わない https://twitter.com/74th/status/1502902835629137922
     base_right = [
         [           KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.EQL],
         [____,      KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.EQL],
@@ -144,7 +145,7 @@ def special_keymap(keyboard: KMKKeyboard):
     raise_left = [
         [____,      ____,       to_mac,     to_linux,   ____,       ____,       ____],
         [           ____,       reset,      ____,       ____,       ____,       ____,       ____],
-        [           KC.CAPS,       ____,       ____,       ____,       ____,       ____,       ____],
+        [           KC.CAPS,    ____,       ____,       ____,       ____,       ____,       ____],
         [           ____,       input_otp1, input_otp2, ____,       ____,       ____,       ____],
         [                                               ____,       ____,       ____,       ____],
     ]
