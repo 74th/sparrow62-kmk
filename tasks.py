@@ -11,6 +11,7 @@ if detect.osx:
 keymap_path = os.environ.get("KEYMAP_PATH", "./keymap.py")
 backup_keymap_path = os.environ.get("BACKUP_KEYMAP_PATH", "./backup_keymap.py")
 
+@task
 def mount_linux(c):
     if not path.exists(mount_dir):
         c.run(f"sudo mkdir -p {mount_dir}")
@@ -28,6 +29,7 @@ def mount_linux(c):
             sys.exit(1)
         c.run(f"sudo mount {device_path} {mount_dir} -o umask=000")
 
+@task
 def mount_mac(c):
     if not path.exists(mount_dir):
         c.run(f"sudo mkdir -p {mount_dir}")

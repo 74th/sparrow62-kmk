@@ -1,6 +1,6 @@
 from kmk.keys import KC
 from kmk.handlers.sequences import simple_key_sequence
-from secret import input_otp1, input_otp2
+from secret import input_otp1, input_otp2, input_otp3
 from kmk.kmk_keyboard import KMKKeyboard
 
 
@@ -145,7 +145,7 @@ def special_keymap(keyboard: KMKKeyboard):
     raise_left = [
         [____,      ____,       to_mac,     to_linux,   ____,       ____,       ____],
         [           ____,       reset,      ____,       ____,       ____,       ____,       ____],
-        [           KC.CAPS,    ____,       ____,       ____,       ____,       ____,       ____],
+        [           KC.CAPS,    input_otp3,       ____,       ____,       ____,       ____,       ____],
         [           ____,       input_otp1, input_otp2, ____,       ____,       ____,       ____],
         [                                               ____,       ____,       ____,       ____],
     ]
