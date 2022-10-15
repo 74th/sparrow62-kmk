@@ -62,10 +62,10 @@ def linux_keymap(keyboard: KMKKeyboard):
     ]
     # トラックパッド併用のため、右手内側 4 キーは使わない https://twitter.com/74th/status/1502902835629137922
     base_right = [
-        [           KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.EQL],
+        [           KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.BSLS],
         [____,      KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.EQL],
         [____,      KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
-        [____,      KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.BSLS],
+        [____,      KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.MINS],
         [____,      raise_ent,  gui_kana,   KC.BSPC],
     ]
     raise_left = [
@@ -105,10 +105,10 @@ def mac_keymap(keyboard: KMKKeyboard):
         [                                               esc_eisu,   opt_tab,    cmd_eisu,   KC.SPC],
     ]
     base_right = [
-        [           KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.EQL],
+        [           KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.BSLS],
         [____,      KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.EQL],
         [____,      KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
-        [____,      KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.BSLS],
+        [____,      KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.MINS],
         [____,      raise_ent,  opt_kana,   KC.BSPC],
     ]
 
@@ -145,7 +145,7 @@ def special_keymap(keyboard: KMKKeyboard):
     raise_left = [
         [____,      ____,       to_mac,     to_linux,   ____,       ____,       ____],
         [           ____,       reset,      ____,       ____,       ____,       ____,       ____],
-        [           KC.CAPS,    input_otp3,       ____,       ____,       ____,       ____,       ____],
+        [           KC.CAPS,    input_otp3, ____,       ____,       ____,       ____,       ____],
         [           ____,       input_otp1, input_otp2, ____,       ____,       ____,       ____],
         [                                               ____,       ____,       ____,       ____],
     ]
