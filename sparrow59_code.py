@@ -128,14 +128,14 @@ def main():
         print()
         keyboard.pixels.set_rgb_fill((255, 0, 0))
 
-        import sparrow59_keymap as backup_keymap_mod
+        import sparrow59_backup_keymap as backup_keymap_mod
 
         layers = backup_keymap_mod.get_keymap(keyboard)
         keyboard.keymap = []
 
         for _, layer in enumerate(layers):
             keymap = [KC.NO] * len(keyboard.col_pins) * len(keyboard.row_pins)
-            apply_to_map(layer, left_map, keymap)
+            apply_to_map(layer, key_assign_map, keymap)
             keyboard.keymap.append(keymap)
 
         if hasattr(backup_keymap_mod, "on_before_start"):
