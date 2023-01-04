@@ -29,6 +29,8 @@ def main():
         from kmk.modules.layers import Layers
         from kmk.modules.modtap import ModTap
         from kmk.extensions.rgb import RGB
+        import busio as io
+
     except ImportError as e:
         reboot_with_error(["cannot find kmk module"], e)
         return
@@ -43,34 +45,34 @@ def main():
     modtap = ModTap()
     keyboard.modules.append(modtap)
 
-    led_ext = RGB(board.GP18, 1, val_default=6)
+    led_ext = RGB(board.GP14, 1, val_default=6)
     led_ext.set_rgb_fill((255, 255, 255))
 
     keyboard.pixels = led_ext
     keyboard.pixels.set_rgb_fill((255, 255, 255))
 
     keyboard.col_pins = [
-        board.GP25,
-        board.GP24,
-        board.GP23,
-        board.GP22,
         board.GP21,
         board.GP20,
         board.GP19,
+        board.GP18,
         board.GP17,
         board.GP16,
-        board.GP14,
+        board.GP15,
         board.GP13,
         board.GP12,
-        board.GP11,
+        board.GP10,
+        board.GP9,
+        board.GP8,
+        board.GP7,
     ]
 
     keyboard.row_pins = [
-        board.A3,
         board.GP28,
         board.GP27,
         board.GP26,
-        board.GP15,
+        board.GP22,
+        board.GP11,
     ]
     n_rows = len(keyboard.row_pins)
     n_cols = len(keyboard.col_pins)
@@ -115,6 +117,12 @@ def main():
 
         if hasattr(keymap_mod, "on_before_start"):
             keymap_mod.on_before_start(keyboard)
+
+        from joypoint import Trackball
+
+        i2c = io.I2C(scl=board.GP1, sda=board.GP0)
+        trackball = Trackball(i2c)
+        keyboard.modules.append(trackball)
 
         print("start keyboard")
 
