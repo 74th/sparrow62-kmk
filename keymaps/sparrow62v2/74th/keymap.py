@@ -69,11 +69,11 @@ def linux_keymap(keyboard: KMKKeyboard):
         [____,      raise_ent,  gui_kana,   KC.BSPC],
     ]
     raise_left = [
-        [____,      CA(KC.F2),  G(KC.F1),   SG(KC.F2),  G(KC.F3),   SG(KC.F2),  CA(KC.ESC)],
+        [____,      CA(KC.F2),  G(KC.F1),   CG(KC.F2),  G(KC.F3),   SG(KC.F2),  CA(KC.ESC)],
         [           KC.ESC,     KC.F1,      KC.F2,      KC.F3,      KC.F4,      KC.F5,      KC.F6],
         [           KC.GRV,     S(KC.N1),   S(KC.N2),   S(KC.N3),   S(KC.N4),   S(KC.N5),   S(KC.N6)],
         [           KC.LSHIFT,  ____,       ____,       pr_window,  pr_screen,  KC.F12,     ____],
-        [                                               KC.ESC,     KC.LALT,    KC.LCTL,    KC.MINS],
+        [                                               KC.ESC,     KC.LALT,     KC.MB_LMB,  KC.MB_RMB],
     ]
     raise_right = [
         [           G(KC.F6),   G(KC.F7),   G(KC.F8),   G(KC.F9),   ____,       ____],
@@ -117,7 +117,7 @@ def mac_keymap(keyboard: KMKKeyboard):
         [           KC.ESC,     KC.F1,      KC.F2,      KC.F3,      KC.F4,      KC.F5,      KC.F6],
         [           KC.LCTL,    S(KC.N1),   S(KC.N2),   S(KC.N3),   S(KC.N4),   S(KC.N5),   S(KC.N6)],
         [           KC.LSHIFT,  ____,       ____,       pr_window,  pr_screen,  KC.F12,     ____],
-        [                       esc_eisu,   KC.SPC,     KC.LGUI,    KC.MINS],
+        [                       esc_eisu,   KC.SPC,     KC.MB_LMB,  KC.MB_RMB],
     ]
     raise_right = [
         [           G(KC.F6),   G(KC.F7),   G(KC.F8),   G(KC.F9),   ____,       ____],

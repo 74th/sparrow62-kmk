@@ -29,6 +29,7 @@ def main():
         from kmk.modules.layers import Layers
         from kmk.modules.modtap import ModTap
         from kmk.extensions.rgb import RGB
+        from kmk.modules.mouse_keys import MouseKeys
         import busio as io
 
     except ImportError as e:
@@ -44,6 +45,7 @@ def main():
     keyboard.modules.append(Layers())
     modtap = ModTap()
     keyboard.modules.append(modtap)
+    keyboard.modules.append(MouseKeys())
 
     led_ext = RGB(board.GP14, 1, val_default=6)
     led_ext.set_rgb_fill((255, 255, 255))

@@ -1,19 +1,18 @@
-from keymap import get_keymap as get_keymap62
+from backup_keymap import get_keymap as get_keymap62
+from keymap import on_before_start
 from kmk.kmk_keyboard import KMKKeyboard
 from kmk.keys import KC
 
-def layer1_keymap(keyboard: KMKKeyboard):
+def keymap_convert(sparrow62: list[list[list]]):
+    l, r = sparrow62
     return [
-        [KC.GRAVE,  KC.N1,      KC.N2,      KC.N3,      KC.N4,      KC.N5,                  KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.EQL],
-        [KC.TAB,    KC.Q,       KC.W,       KC.E,       KC.R,       KC.T,       KC.N6,      KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.BSLS],
-        [KC.CAPS,   KC.A,       KC.S,       KC.D,       KC.F,       KC.G,       KC.LBRC,    KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
-        [KC.LSHIFT, KC.Z,       KC.X,       KC.C,       KC.V,       KC.B,       KC.RBRC,    KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.ENT],
-        [                                   KC.LCTL,    KC.LGUI,    KC.LALT,    KC.SPC,     KC.RGUI,    KC.RCTL,    KC.BSPC,                KC.ENT],
+        [l[0][0],   l[0][2],    l[0][3],    l[0][4],    l[0][5],    l[0][6],                r[0][0],    r[0][1],    r[0][2],    r[0][3],    r[0][4],    r[0][5]],
+        [l[1][0],   l[1][1],    l[1][2],    l[1][3],    l[1][4],    l[1][5],    l[1][6],    r[1][1],    r[1][2],    r[1][3],    r[1][4],    r[1][5],    r[1][6]],
+        [l[2][0],   l[2][1],    l[2][2],    l[2][3],    l[2][4],    l[2][5],    l[2][6],    r[2][1],    r[2][2],    r[2][3],    r[2][4],    r[2][5],    r[2][6]],
+        [l[3][0],   l[3][1],    l[3][2],    l[3][3],    l[3][4],    l[3][5],    l[3][6],    r[3][1],    r[3][2],    r[3][3],    r[3][4],    r[3][5],    r[3][6]],
+        [                                   l[4][0],    l[4][1],    l[4][2],    l[4][3],    r[4][1],    r[4][2],    r[4][3],                l[0][1]],
     ]
 
 def get_keymap(keyboard: KMKKeyboard):
-    layer1 = layer1_keymap(keyboard)
-    return [layer1]
-
-def on_before_start(keyboard: KMKKeyboard):
-    keyboard.pixels.set_rgb_fill((2, 2, 2))
+    layers = get_keymap62(keyboard)
+    return [keymap_convert(layer) for layer in layers]
