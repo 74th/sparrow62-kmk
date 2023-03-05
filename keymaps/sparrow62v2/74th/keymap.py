@@ -54,18 +54,18 @@ def linux_keymap(keyboard: KMKKeyboard):
     raise_ent = KC.LT(linux_raise_layer, KC.ENT, prefer_hold=True)
 
     base_left = [
-        [special,   KC.GRAVE,   KC.N1,      KC.N2,      KC.N3,      KC.N4,      KC.N5],
+        [special,   KC.MB_RMB,   KC.N1,      KC.N2,      KC.N3,      KC.N4,      KC.N5],
         [           KC.GRAVE,   KC.Q,       KC.W,       KC.E,       KC.R,       KC.T,       KC.N6],
         [           ctl_tab,    KC.A,       KC.S,       KC.D,       KC.F,       KC.G,       KC.LBRC],
         [           KC.LSHIFT,  KC.Z,       KC.X,       KC.C,       KC.V,       KC.B,       KC.RBRC],
-        [                                               esc_eisu,   alt_tab,    ctl_eisu,   KC.SPC],
+        [                                               esc_eisu,   ctl_eisu,   KC.SPC,     KC.MB_LMB],
     ]
     # トラックパッド併用のため、右手内側 4 キーは使わない https://twitter.com/74th/status/1502902835629137922
     base_right = [
         [           KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.BSLS],
         [____,      KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.EQL],
         [____,      KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
-        [____,      KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.MINS],
+        [____,      KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.LALT],
         [____,      raise_ent,  gui_kana,   KC.BSPC],
     ]
     raise_left = [
@@ -78,7 +78,7 @@ def linux_keymap(keyboard: KMKKeyboard):
     raise_right = [
         [           G(KC.F6),   G(KC.F7),   G(KC.F8),   G(KC.F9),   ____,       ____],
         [____,      KC.F7,      KC.F8,      KC.F9,      KC.F10,     KC.F11,     KC.F12],
-        [____,      S(KC.N7),   S(KC.N8),   S(KC.N9),   S(KC.N0),   S(KC.MINS), KC.EQL],
+        [____,      S(KC.N7),   KC.PGDOWN,  KC.PGUP,    S(KC.N0),   S(KC.MINS), KC.EQL],
         [____,      KC.LEFT,    KC.DOWN,    KC.UP,      KC.RIGHT,   KC.HOME,    KC.END],
         [____,      ____,       ____,       KC.DEL],
     ]
@@ -98,17 +98,17 @@ def mac_keymap(keyboard: KMKKeyboard):
     raise_ent = KC.LT(mac_raise_layer, KC.ENT, prefer_hold=True)
 
     base_left = [
-        [special,   KC.GRAVE,   KC.N1,      KC.N2,      KC.N3,      KC.N4,      KC.N5],
+        [special,   KC.MB_RMB,   KC.N1,      KC.N2,      KC.N3,      KC.N4,      KC.N5],
         [           KC.GRAVE,   KC.Q,       KC.W,       KC.E,       KC.R,       KC.T,       KC.N6],
         [           ctl_tab,    KC.A,       KC.S,       KC.D,       KC.F,       KC.G,       KC.LBRC],
         [           KC.LSHIFT,  KC.Z,       KC.X,       KC.C,       KC.V,       KC.B,       KC.RBRC],
-        [                                               esc_eisu,   opt_tab,    cmd_eisu,   KC.SPC],
+        [                                               esc_eisu,   cmd_eisu,   KC.SPC,     KC.MB_LMB],
     ]
     base_right = [
         [           KC.N7,      KC.N8,      KC.N9,      KC.N0,      KC.MINS,    KC.BSLS],
         [____,      KC.Y,       KC.U,       KC.I,       KC.O,       KC.P,       KC.EQL],
         [____,      KC.H,       KC.J,       KC.K,       KC.L,       KC.SCLN,    KC.QUOT],
-        [____,      KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.MINS],
+        [____,      KC.N,       KC.M,       KC.COMM,    KC.DOT,     KC.SLSH,    KC.LALT],
         [____,      raise_ent,  opt_kana,   KC.BSPC],
     ]
 
@@ -122,7 +122,7 @@ def mac_keymap(keyboard: KMKKeyboard):
     raise_right = [
         [           G(KC.F6),   G(KC.F7),   G(KC.F8),   G(KC.F9),   ____,       ____],
         [____,      KC.F7,      KC.F8,      KC.F9,      KC.F10,     KC.F11,     KC.F12],
-        [____,      S(KC.N7),   S(KC.N8),   S(KC.N9),   S(KC.N0),   S(KC.MINS), KC.EQL],
+        [____,      S(KC.N7),   KC.PGDOWN,  KC.PGUP,   S(KC.N0),   S(KC.MINS), KC.EQL],
         [____,      KC.LEFT,    KC.DOWN,    KC.UP,      KC.RIGHT,   KC.HOME,    KC.END],
         [____,      ____,       ____,       KC.DEL],
     ]

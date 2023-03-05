@@ -328,6 +328,7 @@ class Trackball(Module):
         '''Calculate accelerated movement vector from raw data'''
         if raw_x == 0 and raw_y == 0:
             return 0, 0
+        return raw_x * 2, raw_y * 2
 
         var_accel = 1
         power = 2.5
